@@ -7,6 +7,9 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+const cors = require('cors')
+app.use(cors()) // Use this after the variable declaration
+
 const port = process.env.PORT || 5000;
 
 
@@ -21,7 +24,7 @@ mongoose
 
 //Routes
 const items = require('./routes/api/items')//As i have used Router() for routing in routes.js .So to allow all routes from the project to index.js (index.js is entry so i need routes to be here in this page so to import routes.js I need to use middleware i.e use())
-app.use('/', items)//1st parameter is prefix of url But dont want any pefix in url.So i kept it null.
+app.use('/api', items)//1st parameter is prefix of url But dont want any pefix in url.So i kept it null.
 
 
 app.listen(port, () => {

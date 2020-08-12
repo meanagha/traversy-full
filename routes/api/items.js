@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
+    // console.log(req.body.name);
     // let item = new Item(req.body); OR
     let item = new Item({
         name: req.body.name
@@ -22,7 +23,7 @@ router.post('/', (req, res) => {
     item.save()
         // .then(item => res.send(item))
         .then(success => {
-            res.status(200).json({ 'success': 'Item Added Successfully' });
+            res.status(200).json(item);
         })
         .catch(err => {
             res.status(400).send("Something Went Wrong");
