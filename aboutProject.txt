@@ -1,0 +1,95 @@
+This is about react and redux with insert,get ,delete and authentication using JWT
+First crud with auth project in MERN and redux.
+
+
+Process : 
+
+Backend : (Node,Mongo,Express)
+- npm init
+- npm i express body-parser mongoose concurrently
+    - epxress : To allow server related operations like listen,send response to bowser,model related operation in easy way we require express.
+    - body-parser :  To allow form action or POST action we need body parser
+    - mongoose : Like mysql pkg ,mongoose also one pkg we need to install before work with mongodb
+    - concurrently : To allow two project run at a time like server + client using one "npm" command we need concurrently.
+
+- npm i -D nodemon    
+    - To install package for only devDependancies i.e to install pkg which required for only developement mode Not for hosting or production mode.Such pkg we need to install using -D.
+    - Here nodemon is just we required for localhost fast server execution nodemon not for server so I am installing this pkg using -D.
+
+
+Package.json setting for production mode 
+
+- scripts : {
+    "start" : "node index.js" //Noramally our nodejs application run using "node index.js" i.e using "node" command with file name.So for production mode we have to tell server that plz start with "node index.js".Please run this command on server.
+    "server : "nodemon index.js" //We can use this two "start" and "server" scripts for localhost also.This are not only for server/prodction mode but also for developement mode.
+}
+So your command will be "npm run server" OR "npm run start"
+
+Now index.js designing ie actual programming started.
+    - Hello World done basic using express and listen also done using express.
+
+mongodb connection link from cluster 
+    - mongodb+srv://patil:123@cluster0.0rn60.mongodb.net/traversy-mern?retryWrites=true&w=majority
+
+Api work :
+
+    - So for that I have created one folder of routes/api.
+    - In this api folder I am storing all my routes pages.
+    - Using Router() of express I am importing and using routes in node.
+    - To apply routes in node in easy manner, express is very useful.
+    - In routes I have used,model so sepretl I dont need to use model in index.js.
+    - Now I am writing all routes in items.js
+    - I have created api for get,insert and delete items with messages I checked this api in postman
+    - for insert I have to use body-parser
+    - Now I will go for client 
+
+- Summery :
+
+    - I have created index.js i.e server fle main entry file of the whole project.
+    - In that file i have imported some key points or made connection for key /imp points
+    - imp points of project as follows,
+        - created key file for db connection
+        - Etsablishes db connection
+        - Used body parser for post method
+        - Created route file and model file
+        - Imported route file using use() middleware.
+        - In route file I haved used model.
+
+    - packagse.json 
+
+        - "start" and "server" script I have written
+        - Then I run this command using "npm run start" or "npm run server" 
+        - Till now I worked for only server side script running using nodemon and node
+        - Now for client also I want to run script,so I want to create short command for client also.      
+        - "client": "cd client && npm start" or "npm start --prefix client"
+        - "dev" : dev is combination of both client and server using concurently so its better to use "npm run dev" to run both back and front in one command.
+        So acctual use of concurently is happening in "dev" script of package.json
+
+        Note : I got error "Something is already running on port 3000."
+                Solution is following command
+                - npx kill-port 3000
+    
+        - I am done with script setting in package.json for client project.Now I am gonna add reactrap
+        into client project.
+
+    - Reactrap
+        - I have installed following packages only for client side.
+        - npm i bootstrap reactstrap uuid react-transition-group
+    
+    So using reactstrap I have created navbar component in react UI Now i am moving forward for designing.
+    - I have created shopping list one another component in which I am using uuid but uuid pkg is not working so react-uuid I am using.
+    - uuid pkg id used to assign unique id to data when we not using database.Bcz generally we getting id of data from database dynamically but I am not connected node with react.
+    - Currently I am only focusing on UI part but with proper logic so id is must alought I can give satic id also like 1,2,3 but instead of that small id ,hashed key long text format id is given.
+    - So using id and name I have created one shopping list on this shopping list I have to perform
+    - get,post(insert),and delete funcionality this is the main aim of project
+    - Using UI and static data I completed this 3 functionlitis Now I will learn or impelment this 3 functionlitis using redux.
+    - SO next part is redux.
+
+- Redux 
+    - Now I am going to impelment redux for get,insert,delete for UI only not still with backend.
+    - So before start readux we should first install 3 packages 
+        - redux (To apply redux technology)
+        - react-redux (To create connection between react and redux or to import redux funtionality into our react project)
+        - redux-thunk (To make axios or http api calls we need thunk)
+        - npm i redux react-redux redux-thunk
+
